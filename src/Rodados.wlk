@@ -11,9 +11,13 @@ class Corsa {
 	}
 }
 object rojo {}
+object azul{}
+object verde{}
+object beige{}
+object negro{}
 
 class Kwid {
-	var property tieneTanqueAdicional = true
+	var property tieneTanqueAdicional
 	method capacidad() {
 		return if(not tieneTanqueAdicional) {
 			4
@@ -21,7 +25,7 @@ class Kwid {
 			3
 		}
 	}
-	method velocidadMaxima() {
+	method velocidadMax() {
 		return if(tieneTanqueAdicional) {
 			120
 		} else {
@@ -36,7 +40,7 @@ class Kwid {
 		}
 	}
 	method color() {
-		return "azul"
+		return azul
 	}
 }
 
