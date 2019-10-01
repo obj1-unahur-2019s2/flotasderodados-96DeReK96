@@ -1,0 +1,12 @@
+import Rodados.*
+import dependencia.*
+test "dependencia" {
+	var corsaRojo = new Corsa(color = rojo)
+	var kwidTurbo = new Kwid()
+	var kuCHAU = new Dependencia()
+	kuCHAU.agregarAFlota(kwidTurbo)
+	kuCHAU.agregarAFlota(corsaRojo)
+	assert.equals(kwidTurbo, kuCHAU.colorDelRodadoMasRapido())
+	assert.equals(4, corsaRojo.capacidad())
+	
+}
