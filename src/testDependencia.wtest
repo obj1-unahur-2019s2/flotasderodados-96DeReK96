@@ -22,6 +22,7 @@ describe "enunciado1" {
 	var pedido = new Pedidos(km= 960, tiempoMax = 8, cantDePasajeros = 4, coloresIncompatibles = #{azul, negro} )
 	
 	
+	
 	fixture {
 		deportes.empleados(45)
 		cultura.empleados(35)
