@@ -1,0 +1,22 @@
+import Rodados.*
+import pedidos.*
+describe "Pedidos" {
+	
+	var pedido = new Pedidos(km= 96, tiempoMax = 8, cantDePasajeros = 4, coloresIncompatibles = #{azul, negro})
+//	var rx7 = new AutoEspecial(capacidad = 4, velocidadMax = 1000, peso = 1500, color = amarillo)
+	var cachito = new Corsa(color = rojo)
+	
+	fixture {
+		// ya no puede satisfacer pedido por estos cambios
+		pedido.coloresIncompatibles().add(rojo)
+		pedido.cantDePasajeros(6)
+		// otro cambio
+		pedido.tiempoMax(6)
+		
+		pedido.acelerar()
+		pedido.relajar()
+	}
+	test "number1" {
+		assert.that(pedido.puedeSatisfacer(cachito))
+	}
+}

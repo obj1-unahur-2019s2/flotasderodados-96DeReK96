@@ -1,6 +1,5 @@
 import Rodados.*
 import dependencia.*
-import pedidos.*
 
 describe "enunciado1" {
 	var deportes = new Dependencia()	
@@ -8,23 +7,17 @@ describe "enunciado1" {
 	
 	var cachito = new Corsa(color = rojo)
 	
-	//deportes
+	//deportes y cultura
 	var corsaAzul = new Corsa(color = azul)
 	var corsaVerde = new Corsa(color = verde)
 	var kwidConTanque = new Kwid(tieneTanqueAdicional = true)
 	var truenoToyota = new AutoEspecial(capacidad = 5, velocidadMax = 160, peso = 1200, color = beige)
-	//cultura
 	var kwidSinTanque = new Kwid(tieneTanqueAdicional = false)
-	
-	//pedido
-	
-	var pedidos = new Pedidos(km= 960, tiempoMax = 8, cantDePasajeros = 4, coloresIncompatibles = #{azul, negro}) 
-	
 	
 	
 	fixture {
 		deportes.empleados(45)
-		cultura.empleados(35)
+		cultura.empleados(31)
 		
 		deportes.agregarAFlota(cachito)
 		deportes.agregarAFlota(corsaAzul)
@@ -34,12 +27,11 @@ describe "enunciado1" {
 		
 		cultura.agregarAFlota(cachito)
 		cultura.agregarAFlota(kwidConTanque)
+		cultura.agregarAFlota(kwidConTanque)
 		cultura.agregarAFlota(kwidSinTanque)
-		cultura.agregarAFlota(truenoToyota)
 		cultura.agregarAFlota(trafic)
-		
 		trafic.interior(interiorPopular)
-		trafic.motor(motorBataton)
+		trafic.motor(motorPulenta)
 	}
 	test "deportes" {
 		assert.equals(6450, deportes.pesoTotalFlota())
@@ -50,12 +42,11 @@ describe "enunciado1" {
 		assert.equals(25, deportes.capacidadFaltante())
 	}
 	test "cultura" {
-		assert.equals(10550, cultura.pesoTotalFlota())
-		assert.notThat(cultura.estaBienEquipada())
-		assert.equals(7, cultura.capacidadTotalEnColor(azul))
-		assert.equals(beige, cultura.colorDelRodadoMasRapido())		
+		assert.equals(11000, cultura.pesoTotalFlota())
+		assert.that(cultura.estaBienEquipada())
+		assert.equals(10, cultura.capacidadTotalEnColor(azul))
+		assert.equals(rojo, cultura.colorDelRodadoMasRapido())		
 		assert.notThat(cultura.esGrande())
-		assert.equals(7, cultura.capacidadFaltante())
-		//CORREGIR EL RESULTADO DE CAPACIDAD FALTANTE
+		assert.equals(5, cultura.capacidadFaltante())
 	}	
 }	

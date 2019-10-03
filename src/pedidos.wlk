@@ -9,7 +9,12 @@ class Pedidos{
 		return km / tiempoMax
 	}
 	method puedeSatisfacer(coche) {
-		return coche.velocidadMax() >= km and  coche.capacidad() == cantDePasajeros and not coloresIncompatibles.contains(coche.color())
+		return coche.velocidadMax() >= km and coche.capacidad() == cantDePasajeros and not coloresIncompatibles.contains(coche.color())
 	}
-	
+	method acelerar() {
+		tiempoMax - 1
+	}
+	method relajar() {
+		tiempoMax + 1
+	}
 }

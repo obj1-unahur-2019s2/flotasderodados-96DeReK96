@@ -15,6 +15,7 @@ object azul{}
 object verde{}
 object beige{}
 object negro{}
+object amarillo{}
 
 class Kwid {
 	var property tieneTanqueAdicional
