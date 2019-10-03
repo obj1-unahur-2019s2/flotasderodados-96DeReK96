@@ -3,6 +3,7 @@ import Rodados.*
 class Dependencia {
 	const flota = []
 	var property empleados
+	const pedidos = []
 	
 	method agregarAFlota(rodado) {
 		flota.add(rodado)
@@ -30,5 +31,21 @@ class Dependencia {
 	}
 	method esGrande() {
 		return empleados >= 40 and flota.size() >= 5
+	}
+	method pedidosMalos() {
+		return pedidos.filter({pedido => not flota.any({ josecito => pedido.puedeSatisfacer(josecito)})})
+	}
+	
+	method loPuedeHacerAlguno(pedido) {
+		return flota.any({ josecito => pedido.loPuedeHacer(josecito)})
+	}
+	
+	method esColorImposible(color) {
+		return pedidos.all({ pedido => pedido
+			//el color que esta en colores incompatibles
+		})
+	}
+	method relajarPedidos() {
+		pedidos.forEach({pedido => pedido.relajar() })
 	}
 }
