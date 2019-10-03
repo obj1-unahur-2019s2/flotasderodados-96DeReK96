@@ -12,14 +12,13 @@ describe "enunciado1" {
 	var corsaAzul = new Corsa(color = azul)
 	var corsaVerde = new Corsa(color = verde)
 	var kwidConTanque = new Kwid(tieneTanqueAdicional = true)
-	var AE86 = new AutoEspecial(capacidad = 5, velocidadMax = 160, peso = 1200, color = beige)
-	
+	var truenoToyota = new AutoEspecial(capacidad = 5, velocidadMax = 160, peso = 1200, color = beige)
 	//cultura
-	
+	var kwidSinTanque = new Kwid(tieneTanqueAdicional = false)
 	
 	//pedido
 	
-	var pedido = new Pedidos(km= 960, tiempoMax = 8, cantDePasajeros = 4, coloresIncompatibles = #{azul, negro} )
+	var pedidos = new Pedidos(km= 960, tiempoMax = 8, cantDePasajeros = 4, coloresIncompatibles = #{azul, negro}) 
 	
 	
 	
@@ -27,5 +26,36 @@ describe "enunciado1" {
 		deportes.empleados(45)
 		cultura.empleados(35)
 		
+		deportes.agregarAFlota(cachito)
+		deportes.agregarAFlota(corsaAzul)
+		deportes.agregarAFlota(corsaVerde)
+		deportes.agregarAFlota(kwidConTanque)
+		deportes.agregarAFlota(truenoToyota)
+		
+		cultura.agregarAFlota(cachito)
+		cultura.agregarAFlota(kwidConTanque)
+		cultura.agregarAFlota(kwidSinTanque)
+		cultura.agregarAFlota(truenoToyota)
+		cultura.agregarAFlota(trafic)
+		
+		trafic.interior(interiorPopular)
+		trafic.motor(motorBataton)
 	}
-}
+	test "deportes" {
+		assert.equals(6450, deportes.pesoTotalFlota())
+		assert.that(deportes.estaBienEquipada())
+		assert.equals(7, deportes.capacidadTotalEnColor(azul))
+		assert.equals(beige, deportes.colorDelRodadoMasRapido())
+		assert.that(deportes.esGrande())
+		assert.equals(25, deportes.capacidadFaltante())
+	}
+	test "cultura" {
+		assert.equals(10550, cultura.pesoTotalFlota())
+		assert.notThat(cultura.estaBienEquipada())
+		assert.equals(7, cultura.capacidadTotalEnColor(azul))
+		assert.equals(beige, cultura.colorDelRodadoMasRapido())		
+		assert.notThat(cultura.esGrande())
+		assert.equals(7, cultura.capacidadFaltante())
+		//CORREGIR EL RESULTADO DE CAPACIDAD FALTANTE
+	}	
+}	
